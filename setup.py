@@ -10,7 +10,18 @@ setup(
         include=[
             'youtube', 
             'youtube.youtube_resources',
-            'youtube.oauth'
+            'youtube.youtube_resources.youtube_channel',
+            'youtube.youtube_resources.youtube_comment',
+            'youtube.youtube_resources.youtube_comment_thread',
+            'youtube.youtube_resources.youtube_playlist',
+            'youtube.youtube_resources.youtube_video',
+            'youtube.youtube_resources.youtube_video_category',
+            'youtube.oauth',
+            'youtube.search',
+            'youtube.search.category',
+            'youtube.search.channel',
+            'youtube.search.playlist',
+            'youtube.search.video'
         ]
         ),
     version=VERSION,
