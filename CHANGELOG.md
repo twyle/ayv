@@ -1,3 +1,9 @@
+## v0.1.1 (2023-03-21)
+
+### Fix
+
+- updates the library name.
+
 ## v0.1.0 (2023-03-21)
 
 ### Feat
