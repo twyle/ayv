@@ -1,11 +1,21 @@
 from setuptools import find_packages, setup
 
-VERSION = '0.0.1' 
-DESCRIPTION = 'My first Python package'
-LONG_DESCRIPTION = 'My first Python package with a slightly longer description'
+# For consistent encoding
+from codecs import open
+from os import path
+
+# The directory containing this file
+HERE = path.abspath(path.dirname(__file__))
+
+# Get the long description from the README file
+with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
+    LONG_DESCRIPTION = f.read()
+
+VERSION = '0.1.0' 
+DESCRIPTION = 'A library to use with the YouTube API. With it you can find, manage and analyze YouTube resources (Videos, Channels, Playlists, Broadcasts e.t.c) from python scripts.'
 
 setup(
-    name='youtube',
+    name='ayv',
     packages=find_packages(
         include=[
             'youtube', 
@@ -26,19 +36,23 @@ setup(
         ),
     version=VERSION,
     description=DESCRIPTION,
+    long_description_content_type="text/markdown",
     long_description=LONG_DESCRIPTION,
+    url="https://youtube.readthedocs.io/",
     author='Lyle Okoth',
     author_email='lyceokoth@gmail.com',
     license='MIT',
-    install_requires=['google-api-python-client==2.81.0', 'google-auth-oauthlib==1.0.0'],
-    
-    keywords=['python', 'first package'],
-        classifiers= [
-            "Development Status :: 3 - Alpha",
-            "Intended Audience :: Education",
-            "Programming Language :: Python :: 2",
-            "Programming Language :: Python :: 3",
-            "Operating System :: MacOS :: MacOS X",
-            "Operating System :: Microsoft :: Windows",
-        ]
+    install_requires=['google-api-python-client', 'google-auth-oauthlib'],
+    keywords=['python', 'youtube', 'youtube api', 'youtube comments'],
+    classifiers=[
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python",
+        "Programming Language :: Python :: 3",
+        "Programming Language :: Python :: 3.6",
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Operating System :: OS Independent"
+    ],
 )

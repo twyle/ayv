@@ -1,10 +1,10 @@
-# youtube
+# ayv (Analytics for YouTube Videos)
 
-> A python library for working with the YouTube API. Enables the user to find YouTube Videos, Channels and Playlists.
+> A library to use with the YouTube API. With it you can find, manage and analyze YouTube resources (Videos, Channels, Playlists, Broadcasts e.t.c) from python scripts.
 
 ## Installation
 ```sh
-pip install youtube
+pip install ayv
 ```
 
 ## Get started
@@ -13,7 +13,7 @@ To get started, you a verified Google Account and Google API keys. Follow this [
 
 To find videos matching a particular serach query like *Python programming videos*, import the library, then provide it with the path to the credentials file that you downloaded from Google:
 ```sh
-from youtube import YouTube
+from ayv import YouTube
 
 credentials_file = '/home/user/Downloads/credentials.json'
 token_path = '/home/user'
