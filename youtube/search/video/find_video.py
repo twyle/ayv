@@ -40,6 +40,7 @@ class FindVideo:
         parsed_video_details['details']['title'] = items['snippet']['title']
         parsed_video_details['details']['channelTitle'] = items['snippet']['channelTitle']
         parsed_video_details['details']['description'] = items['snippet']['description']
+        parsed_video_details['details']['thumbnails'] = items['snippet']['thumbnails']
         if items['snippet'].get('tags'):
             parsed_video_details['details']['tags'] = items['snippet']['tags']
         else:

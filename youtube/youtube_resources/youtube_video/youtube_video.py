@@ -43,4 +43,7 @@ class YouTubeVideo:
         return self.__video_details.get_video_id()
     
     def get_video_title(self):
-        pass
+        return self.get_video_details()['title']
+    
+    def get_video_banner(self):
+        return self.get_video_details()['thumbnail']['url']

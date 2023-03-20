@@ -6,3 +6,6 @@ clean:
 
 test-upload:
 	@twine upload --repository testpypi dist/*
+
+bump-tag:
+	@cz bump --changelog
