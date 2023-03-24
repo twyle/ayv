@@ -1,3 +1,9 @@
+## v0.4.0 (2023-03-24)
+
+### Feat
+
+- adds the channel search functioality.
+
 ## v0.3.0 (2023-03-24)
 
 ### Feat
