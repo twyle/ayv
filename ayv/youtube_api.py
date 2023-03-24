@@ -1,6 +1,8 @@
 from .oauth import YouTubeAPIAuth
 from .search.video import VideoSearch, FindVideo
 from .search.category import SearchYouTubeVideoCategories
+from .youtube_resources.youtube_playlist import Playlist
+from .search.playlist import PlaylistSearch
 
 
 class YouTube:
@@ -39,6 +41,10 @@ class YouTube:
         most_popular_videos_by_region = VideoSearch().search_most_popular_videos_by_region(
             region_code, self.__youtube_client)
         return most_popular_videos_by_region
+    
+    def search_playlists(self, query_string: str) -> list[str]:
+        playlists = PlaylistSearch(query_string).search_playlist(self.__youtube_client)
+        return playlists
     
     def get_video_categories(self):
         if not self.__video_categories:

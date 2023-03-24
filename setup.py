@@ -11,7 +11,7 @@ HERE = path.abspath(path.dirname(__file__))
 with open(path.join(HERE, 'README.md'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
-VERSION = '0.1.1' 
+VERSION = '0.2.0' 
 DESCRIPTION = 'A library to use with the YouTube API. With it you can find, manage and analyze YouTube resources (Videos, Channels, Playlists, Broadcasts e.t.c) from python scripts.'
 
 setup(
