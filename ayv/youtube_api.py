@@ -3,6 +3,7 @@ from .search.video import VideoSearch, FindVideo
 from .search.category import SearchYouTubeVideoCategories
 from .youtube_resources.youtube_playlist import Playlist
 from .search.playlist import PlaylistSearch
+from .search.channel import ChannelSearch
 
 
 class YouTube:
@@ -45,6 +46,10 @@ class YouTube:
     def search_playlists(self, query_string: str) -> list[str]:
         playlists = PlaylistSearch(query_string).search_playlist(self.__youtube_client)
         return playlists
+    
+    def search_channels(self, query_string: str) -> list[str]:
+        channels = ChannelSearch(query_string).search_channels(self.__youtube_client)
+        return channels
     
     def get_video_categories(self):
         if not self.__video_categories:

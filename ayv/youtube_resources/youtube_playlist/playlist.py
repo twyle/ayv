@@ -57,3 +57,15 @@ class Playlist:
             playlist_item['videoOwnerChannelId'] = item['snippet']['videoOwnerChannelId']
             playlist_items.append(playlist_item)
         return playlist_items
+    
+    def get_playlist_thumbnail(self):
+        pass
+    
+    def get_playlist_title(self):
+        pass
+    
+    def get_playlist_channel_title(self):
+        pass
+    
+    def get_playlist_channel_thumbnail(self):
+        pass

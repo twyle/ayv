@@ -6,6 +6,8 @@ client_secrets_file = '/home/lyle/Downloads/client_secret.json'
 youtube_client = youtube.authenticate_from_client_secrets_file(client_secrets_file)
 videos = youtube.search_videos('python programming')
 playlists = youtube.search_playlists('python programming')
+channels = youtube.search_channels('python programming')
+print(channels)
 
 if __name__ == '__main__':
     for video in videos:
