@@ -1,3 +1,9 @@
+## v0.2.0 (2023-03-24)
+
+### Feat
+
+- adds the authentication for production builds.
+
 ## v0.1.1 (2023-03-21)
 
 ### Fix
