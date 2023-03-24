@@ -1,1 +1,1 @@
-from .oauth import Authenticate
+from .oauth import YouTubeAPIAuth

@@ -1,15 +1,29 @@
-from .oauth import Authenticate
+from .oauth import YouTubeAPIAuth
 from .search.video import VideoSearch, FindVideo
 from .search.category import SearchYouTubeVideoCategories
 
 
 class YouTube:
-    def __init__(self, credentials_file='', token_path=''):
-        self.__auth = Authenticate(credentials_file, token_path)
-        self.__youtube_client = self.__youtube_client = self.__auth.authenticate()
+    def __init__(self):
+        self.__youtube_api_auth = YouTubeAPIAuth()
+        self.__youtube_client = None
         self.__video_categories = []
-
-
+        
+    def get_credentials_path(self):
+        return self.__youtube_api_auth.get_credentials_path()
+        
+    def authenticate_from_client_secrets_file(self, client_secrets_file: str, 
+                credentials_path: str = ''):
+        self.__youtube_client = self.__youtube_api_auth.authenticate_from_client_secrets_file(client_secrets_file, credentials_path)
+        return self.__youtube_client
+    
+    def authenticate_from_credentials(self, credentials_path: str):
+        self.__youtube_client = self.__youtube_api_auth.authenticate_from_credentials(credentials_path)
+        return self.__youtube_client
+    
+    def generate_credentials(self, client_secrets_file: str, credentials_path: str = ''):
+        self.__youtube_api_auth.generate_credentials(client_secrets_file, credentials_path)
+        
     def get_youtube(self):
         return self.__youtube_client
     

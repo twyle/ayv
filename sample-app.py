@@ -1,9 +1,9 @@
 from ayv import YouTube
 
 
-youtube = YouTube(credentials_file='/home/lyle/Downloads/client_secret.json', 
-                  token_path='')
-youtube_client = youtube.get_youtube()
+youtube = YouTube()
+client_secrets_file = '/home/lyle/Downloads/client_secret.json'
+youtube_client = youtube.authenticate_from_client_secrets_file(client_secrets_file)
 videos = youtube.search_videos('python programming')
 
 
