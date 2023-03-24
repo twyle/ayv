@@ -1,3 +1,9 @@
+## v0.3.0 (2023-03-24)
+
+### Feat
+
+- adds the playlist search functionality.
+
 ## v0.2.0 (2023-03-24)
 
 ### Feat
