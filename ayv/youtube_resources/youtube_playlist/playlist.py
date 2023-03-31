@@ -59,10 +59,10 @@ class Playlist:
         return playlist_items
     
     def get_playlist_thumbnail(self):
-        pass
+        return self.__thumbnails['standard']['url']
     
     def get_playlist_title(self):
-        pass
+        return self.__title
     
     def get_playlist_channel_title(self):
         pass

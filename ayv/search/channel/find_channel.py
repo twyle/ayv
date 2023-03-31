@@ -1,6 +1,9 @@
 from ...youtube_resources.youtube_channel import Channel
 
 class FindChannel:       
+    def __init__(self, youtube_client):
+        self.__youtube_client = youtube_client
+        
     def __generate_basic_info_params(self, channel_id):
         basic_info_params = dict(
             id=channel_id,
@@ -8,13 +11,13 @@ class FindChannel:
         ) 
         return basic_info_params
     
-    def find_channel_by_name(self, youtube_client):
+    def find_channel_by_name(self):
         pass
     
-    def find_channel_by_id(self, channel_id, youtube_client):
+    def find_channel_by_id(self, channel_id):
         """Find the video."""
         basic_info_params = self.__generate_basic_info_params(channel_id)
-        search_request = youtube_client.channels().list(
+        search_request = self.__youtube_client.channels().list(
                 **basic_info_params
             )
         search_response = search_request.execute()

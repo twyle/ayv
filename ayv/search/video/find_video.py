@@ -1,26 +1,26 @@
 from ...youtube_resources.youtube_video import YouTubeVideo
 
 class FindVideo:
-    def __init__(self, video_id: str):
+    def __init__(self, youtube_client):
         """Find the video with the given id."""
-        self.__video_id = video_id
+        self.__youtube_client = youtube_client
         
-    def __generate_basic_info_params(self):
+    def __generate_basic_info_params(self, video_id: str):
         basic_info_params = dict(
-            id=self.__video_id,
+            id=video_id,
             part='snippet,contentDetails,statistics'
         ) 
         return basic_info_params
     
-    def find_video(self, youtube_client):
+    def find_video(self, video_id: str):
         """Find the video."""
-        basic_info_params = self.__generate_basic_info_params()
-        search_request = youtube_client.videos().list(
+        basic_info_params = self.__generate_basic_info_params(video_id)
+        search_request = self.__youtube_client.videos().list(
                 **basic_info_params
             )
         search_response = search_request.execute()
         parsed_response = self.__parse_video_details(search_response)
-        youtube_video = YouTubeVideo(parsed_response)
+        youtube_video = YouTubeVideo(parsed_response, self.__youtube_client)
         return youtube_video
     
     def __parse_video_details(self, video_details: dict):

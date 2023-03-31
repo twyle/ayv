@@ -19,9 +19,6 @@ class YouTubeAPIAuth:
         self.__credentials_path = None
         self.__client_secrets_file = None
         self.__credentials = None
-        
-    def get_credentials_path(self):
-        return self.__credentials_path
     
     def authenticate_from_client_secrets_file(self, client_secrets_file: str, 
                                               credentials_path: str = ''):

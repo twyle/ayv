@@ -1,17 +1,19 @@
 from ayv import YouTube
+from ayv.errors import QuotasExceededException
 
 
 youtube = YouTube()
-client_secrets_file = '/home/lyle/Downloads/client_secret.json'
-youtube_client = youtube.authenticate_from_client_secrets_file(client_secrets_file)
+client_secrets_file = '/home/lyle/Downloads/python_learning_site.json'
+youtube.authenticate_from_client_secrets_file(client_secrets_file)
 videos = youtube.search_videos('python programming')
-playlists = youtube.search_playlists('python programming')
-channels = youtube.search_channels('python programming')
-print(channels)
+# try:
+#     playlists = youtube.search_playlists('python programming')
+# except QuotasExceededException:
+#     playlists = []
+# channels = youtube.search_channels('python programming')
+# playlists = youtube.search_playlists('python programming')
 
 if __name__ == '__main__':
     for video in videos:
-        print(video.get_video_id())
-        print(video.get_video_title())
-        print(video.get_video_banner())
+        print(video.to_dict())
         print()

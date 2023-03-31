@@ -7,3 +7,18 @@ class Channel:
         self.__publishedAt = publishedAt
         self.__thumbnails = thumbnails
         self.__statistics = statistics
+        
+    def get_channel_thumbnail(self):
+        thumbnail = ''
+        if self.__thumbnails:
+            if self.__thumbnails.get('default'):
+                thumbnail = self.__thumbnails.get('default').get('url')
+            elif self.__thumbnails.get('medium'):
+                thumbnail = self.__thumbnails.get('medium').get('url')
+            elif self.__thumbnails.get('high'):
+                thumbnail = self.__thumbnails.get('high').get('url')
+            elif self.__thumbnails.get('standard'):
+                thumbnail = self.__thumbnails.get('standard').get('url')
+            elif self.__thumbnails.get('maxres'):
+                thumbnail = self.__thumbnails.get('maxres').get('url')
+        return thumbnail

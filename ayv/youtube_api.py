@@ -4,9 +4,14 @@ from .search.category import SearchYouTubeVideoCategories
 from .youtube_resources.youtube_playlist import Playlist
 from .search.playlist import PlaylistSearch
 from .search.channel import ChannelSearch
+from .errors import QuotasExceededException
+from googleapiclient.errors import HttpError
 
 
 class YouTube:
+    MAX_RESULTS = 20
+    REGION_CODE = 'us'
+    
     def __init__(self):
         self.__youtube_api_auth = YouTubeAPIAuth()
         self.__youtube_client = None
@@ -30,9 +35,18 @@ class YouTube:
     def get_youtube(self):
         return self.__youtube_client
     
+    def get_video_categories(self):
+        if not self.__video_categories:
+            self.__video_categories = SearchYouTubeVideoCategories(self.__youtube_client).get_youtube_video_categories()
+        return self.__video_categories
+    
     def search_videos(self, query_string: str) -> list[str]:
-        videos = VideoSearch().search_video(query_string, self.__youtube_client)
+        self.__video_search = VideoSearch(self.__youtube_client)
+        self.__previous_page_token, self.__next_page_token, videos = self.__video_search.search_videos(query_string)
         return videos
+    
+    def get_video_collections(self):
+        return self.__video_search.get_videos()
     
     def find_related_videos(self, youtube_video):
         related_videos = VideoSearch().search_related_videos(youtube_video, self.__youtube_client)
@@ -42,19 +56,6 @@ class YouTube:
         most_popular_videos_by_region = VideoSearch().search_most_popular_videos_by_region(
             region_code, self.__youtube_client)
         return most_popular_videos_by_region
-    
-    def search_playlists(self, query_string: str) -> list[str]:
-        playlists = PlaylistSearch(query_string).search_playlist(self.__youtube_client)
-        return playlists
-    
-    def search_channels(self, query_string: str) -> list[str]:
-        channels = ChannelSearch(query_string).search_channels(self.__youtube_client)
-        return channels
-    
-    def get_video_categories(self):
-        if not self.__video_categories:
-            self.__video_categories = SearchYouTubeVideoCategories(self.__youtube_client).get_youtube_video_categories()
-        return self.__video_categories
     
     def find_most_popular_videos_by_category(self, category_id):
         most_popular_videos_by_category = VideoSearch().search_most_popular_videos_by_category(
@@ -80,6 +81,6 @@ class YouTube:
             raise TypeError('Te video_url has to be a string.')
         if '=' not in video_url:
             url_format = 'https://www.youtube.com/watch?v=Dqdu-FsBk0s'
-            raise ValueError(f'The video_url should be of the format "{url_format}"')
+            raise ValueError(f'Te video_url should be of the format "{url_format}"')
         video_url = video_url.split('=')[1]
         return video_url
